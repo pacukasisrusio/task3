@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using System;
+using System.Numerics;
 
 [ApiController]
 [Route("pacukasisrusio_gmail_com")]
@@ -9,19 +9,19 @@ public class Task3Controller : ControllerBase
    public IActionResult Get([FromQuery] string? x, [FromQuery] string? y)
 
     {
-        ulong ux, uy;
+        ulong bx, by;
 
-        if (!ulong.TryParse(x, out ux) || ux == 0 ||
-            !ulong.TryParse(y, out uy) || uy == 0)
+        if (!BigInteger.TryParse(x, out var bx) || bx <= 0 ||
+            !BigInteger.TryParse(y, out var by) || by <= 0)
         {
             return Content("NaN");
         }
 
-        ulong lcm = LCM(ux, uy);
+        ulong lcm = LCM(bx, by);
         return Content(lcm.ToString());
     }
 
-    static ulong GCD(ulong a, ulong b)
+    static BigInteger GCD(BigInteger a, BigInteger b)
 
     {
         while (b != 0)
@@ -33,9 +33,9 @@ public class Task3Controller : ControllerBase
         return a;
     }
 
-    static ulong LCM(ulong a, ulong b)
+    static BigInteger LCM(BigInteger a, BigInteger b)
 
     {
-        return a / GCD(a, b) * b;
+        return a/GCD(a,b)*b;
     }
 }
