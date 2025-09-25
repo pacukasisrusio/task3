@@ -1,42 +1,44 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Numerics;
+using System;
 
 [ApiController]
 [Route("pacukasisrusio_gmail_com")]
 public class Task3Controller : ControllerBase
 {
     [HttpGet]
-   public IActionResult Get([FromQuery] string? x, [FromQuery] string? y)
-
+    public IActionResult Get([FromQuery] string x, [FromQuery] string y)
     {
-        BigInteger bx;
-        BigInteger by;
+        int ix, iy;
+        int minValue = 0;
 
-        if (!BigInteger.TryParse(x, out bx) || bx <= 0 ||
-            !BigInteger.TryParse(y, out by) || by <= 0)
+        if (!int.TryParse(x, out ix) || ix <= minValue ||
+            !int.TryParse(y, out iy) || iy <= minValue)
         {
             return Content("NaN");
         }
+        if (ix == 0)
+        return Content(iy.ToString());
 
-        BigInteger lcm = LCM(bx, by);
+        if (iy == 0)
+        return Content(ix.ToString());
+
+        int lcm = LCM(ix, iy);
         return Content(lcm.ToString());
     }
 
-    static BigInteger GCD(BigInteger a, BigInteger b)
-
+    static int GCD(int a, int b)
     {
         while (b != 0)
         {
-            ulong t = b;
+            int t = b;
             b = a % b;
             a = t;
         }
         return a;
     }
 
-    static BigInteger LCM(BigInteger a, BigInteger b)
-
+    static int LCM(int a, int b)
     {
-        return a/GCD(a,b)*b;
+        return a / GCD(a, b) * b;
     }
 }
