@@ -23,7 +23,8 @@ public class Task3Controller : ControllerBase
         return Content(lcm.ToString());
     }
 
-    static int GCD(int a, int b)
+    static ulong GCD(ulong a, ulong b)
+
     {
         while (b != 0)
         {
@@ -34,7 +35,8 @@ public class Task3Controller : ControllerBase
         return a;
     }
 
-    static int LCM(int a, int b)
+    static ulong LCM(ulong a, ulong b)
+
     {
         return a / GCD(a, b) * b;
     }
