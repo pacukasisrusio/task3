@@ -29,7 +29,7 @@ public class Task3Controller : ControllerBase
     {
         while (b != 0)
         {
-            int t = b;
+            BigInteger t = b;
             b = a % b;
             a = t;
         }
