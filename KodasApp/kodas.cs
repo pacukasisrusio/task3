@@ -9,7 +9,7 @@ public class Task3Controller : ControllerBase
     [HttpGet]
     public IActionResult Get([FromQuery] string x, [FromQuery] string y)
     {
-        int ix, iy;
+        BigInteger ix, iy;
 
         if (!BigInteger.TryParse(x, out BigInteger ix) || ix < 0 ||
             !BigInteger.TryParse(y, out BigInteger iy) || iy < 0)
@@ -22,7 +22,7 @@ public class Task3Controller : ControllerBase
         if (iy == 0)
         return Content(ix.ToString());
 
-        int lcm = LCM(ix, iy);
+        BigInteger lcm = LCM(ix, iy);
         return Content(lcm.ToString());
     }
 
