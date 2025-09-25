@@ -9,15 +9,16 @@ public class Task3Controller : ControllerBase
    public IActionResult Get([FromQuery] string? x, [FromQuery] string? y)
 
     {
-        ulong bx, by;
+        BigInteger bx;
+        BigInteger by;
 
-        if (!BigInteger.TryParse(x, out var bx) || bx <= 0 ||
-            !BigInteger.TryParse(y, out var by) || by <= 0)
+        if (!BigInteger.TryParse(x, out bx) || bx <= 0 ||
+            !BigInteger.TryParse(y, out by) || by <= 0)
         {
             return Content("NaN");
         }
 
-        ulong lcm = LCM(bx, by);
+        BigInteger lcm = LCM(bx, by);
         return Content(lcm.ToString());
     }
 
