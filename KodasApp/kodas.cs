@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Numerics;
 
 [ApiController]
 [Route("pacukasisrusio_gmail_com")]
@@ -10,8 +11,8 @@ public class Task3Controller : ControllerBase
     {
         int ix, iy;
 
-        if (!int.TryParse(x, out ix) || ix < 0 ||
-            !int.TryParse(y, out iy) || iy < 0)
+        if (!BigInteger.TryParse(x, out BigInteger ix) || ix < 0 ||
+            !BigInteger.TryParse(y, out BigInteger iy) || iy < 0)
         {
             return Content("NaN");
         }
@@ -25,7 +26,7 @@ public class Task3Controller : ControllerBase
         return Content(lcm.ToString());
     }
 
-    static int GCD(int a, int b)
+    static BigInteger GCD(BigInteger a, BigInteger b)
     {
         while (b != 0)
         {
@@ -36,7 +37,7 @@ public class Task3Controller : ControllerBase
         return a;
     }
 
-    static int LCM(int a, int b)
+    static BigInteger LCM(BigInteger a, BigInteger b)
     {
         return a / GCD(a, b) * b;
     }
