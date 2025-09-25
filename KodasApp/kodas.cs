@@ -11,8 +11,8 @@ public class Task3Controller : ControllerBase
         int ix, iy;
         int minValue = 0;
 
-        if (!int.TryParse(x, out ix) || ix <= minValue ||
-            !int.TryParse(y, out iy) || iy <= minValue)
+        if (!int.TryParse(x, out int ix) || ix < 0 ||
+            !int.TryParse(y, out int iy) || iy < 0)
         {
             return Content("NaN");
         }
