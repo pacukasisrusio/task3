@@ -9,17 +9,15 @@ public class Task3Controller : ControllerBase
    public IActionResult Get([FromQuery] string? x, [FromQuery] string? y)
 
     {
-        if (string.IsNullOrWhiteSpace(x) || string.IsNullOrWhiteSpace(y))
-        {
-            return Content("NaN");
-        }
-        if (!ulong.TryParse(x, out ulong ix) || ix == 0 ||
-            !ulong.TryParse(y, out ulong iy) || iy == 0)
+        ulong ux, uy;
+
+        if (!ulong.TryParse(x, out ux) || ux == 0 ||
+            !ulong.TryParse(y, out uy) || uy == 0)
         {
             return Content("NaN");
         }
 
-        int lcm = LCM(ix, iy);
+        ulong lcm = LCM(ux, uy);
         return Content(lcm.ToString());
     }
 
