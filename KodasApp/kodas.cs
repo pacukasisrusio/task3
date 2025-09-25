@@ -26,7 +26,7 @@ public class Task3Controller : ControllerBase
     {
         while (b != 0)
         {
-            int t = b;
+            ulong t = b;
             b = a % b;
             a = t;
         }
