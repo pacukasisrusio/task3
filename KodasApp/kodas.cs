@@ -7,22 +7,22 @@ using System.Numerics;
 public class Task3Controller : ControllerBase
 {
     [HttpGet]
-    public IActionResult Get([FromQuery] string x, [FromQuery] string y)
+    public IActionResult Get([FromQuery] string? x, [FromQuery] string? y)
     {
+        bool xValid = BigInteger.TryParse(x, out BigInteger ix) && ix >= 0;
+        bool yValid = BigInteger.TryParse(y, out BigInteger iy) && iy >= 0;
 
-        if (!BigInteger.TryParse(x, out BigInteger ix) || ix < 0 ||
-            !BigInteger.TryParse(y, out BigInteger iy) || iy < 0)
-        {
+        if (!xValid || !yValid)
             return Content("NaN");
-        }
-        if (ix == 0)
-        return Content(iy.ToString());
 
-        if (iy == 0)
-        return Content(ix.ToString());
+        if (ix.IsZero)
+            return Content(iy.ToString(), "Nan");
+
+        if (iy.IsZero)
+            return Content(ix.ToString(), "NaN");
 
         BigInteger lcm = LCM(ix, iy);
-        return Content(lcm.ToString());
+        return Content(lcm.ToString(), "NaN");
     }
 
     static BigInteger GCD(BigInteger a, BigInteger b)
