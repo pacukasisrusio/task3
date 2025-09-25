@@ -22,7 +22,7 @@ public class Task3Controller : ControllerBase
             return Content(ix.ToString());
 
         BigInteger lcm = LCM(ix, iy);
-        return Content(lcm.ToString(), "NaN");
+        return Content(lcm.ToString());
     }
 
     static BigInteger GCD(BigInteger a, BigInteger b)
