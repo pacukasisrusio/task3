@@ -16,10 +16,10 @@ public class Task3Controller : ControllerBase
             return Content("NaN");
 
         if (ix.IsZero)
-            return Content(iy.ToString(), "Nan");
+            return Content(iy.ToString());
 
         if (iy.IsZero)
-            return Content(ix.ToString(), "NaN");
+            return Content(ix.ToString());
 
         BigInteger lcm = LCM(ix, iy);
         return Content(lcm.ToString(), "NaN");
@@ -38,6 +38,6 @@ public class Task3Controller : ControllerBase
 
     static BigInteger LCM(BigInteger a, BigInteger b)
     {
-        return a / GCD(a, b) * b;
+        return BigInteger.Abs(a / GCD(a, b) * b);
     }
 }
