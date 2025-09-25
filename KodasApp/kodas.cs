@@ -9,10 +9,9 @@ public class Task3Controller : ControllerBase
     public IActionResult Get([FromQuery] string x, [FromQuery] string y)
     {
         int ix, iy;
-        int minValue = 0;
 
-        if (!int.TryParse(x, out int ix) || ix < 0 ||
-            !int.TryParse(y, out int iy) || iy < 0)
+        if (!int.TryParse(x, out ix) || ix < 0 ||
+            !int.TryParse(y, out iy) || iy < 0)
         {
             return Content("NaN");
         }
