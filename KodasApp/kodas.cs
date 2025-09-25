@@ -6,7 +6,8 @@ using System;
 public class Task3Controller : ControllerBase
 {
     [HttpGet]
-    public IActionResult Get([FromQuery] string x, [FromQuery] string y)
+   public IActionResult Get([FromQuery] string? x, [FromQuery] string? y)
+
     {
         int ix, iy;
         int minValue = 0;
