@@ -14,8 +14,7 @@ public class Task3Controller : ControllerBase
         if (!int.TryParse(x, out ix) || ix <= minValue ||
             !int.TryParse(y, out iy) || iy <= minValue)
         {
-            Console.WriteLine("NaN");
-            return BadRequest("Invalid query parameters");
+            return BadRequest("NaN");
         }
 
         int lcm = LCM(ix, iy);
