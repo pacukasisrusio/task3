@@ -9,7 +9,6 @@ public class Task3Controller : ControllerBase
     [HttpGet]
     public IActionResult Get([FromQuery] string x, [FromQuery] string y)
     {
-        BigInteger ix, iy;
 
         if (!BigInteger.TryParse(x, out BigInteger ix) || ix < 0 ||
             !BigInteger.TryParse(y, out BigInteger iy) || iy < 0)
