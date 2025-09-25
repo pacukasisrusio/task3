@@ -15,11 +15,8 @@ public class Task3Controller : ControllerBase
         if (!xValid || !yValid)
             return Content("NaN");
 
-        if (ix.IsZero)
-            return Content(iy.ToString());
-
-        if (iy.IsZero)
-            return Content(ix.ToString());
+        if (ix == 0 || iy == 0)
+            return Content("0");
 
         BigInteger lcm = LCM(ix, iy);
         return Content(lcm.ToString());
